@@ -88,18 +88,21 @@ $('#attackButton').on('click', function() {
             if (allPlayers.length == 0) {
                 $('#resultSection').append('<p style="color:white;"> You have Won !! , Game over ! </p>');
                 Defender = [];
+                DefenderHP=[];
                 gameover = true;
                 fngameover();
             } else {
 
                 $('#resultSection').append('<p style="color:white;"> You have defeated :  ' + Defender[0] + ', you can choose to fight another enemy. </p>');
                 Defender = [];
+                DefenderHP=[];
             }
         } else {
             if (CurrPlayerHP[0] <= 0) {
                 $('#resultSection').empty();
                 $('#resultSection').append('<p style="color:white;"> You have been defeated, game is over </p>');
                 Defender = [];
+                DefenderHP=[];
                 gameover = true;
                 fngameover();
                 /* add a reset button $('#resultSection').append(*/
@@ -111,6 +114,7 @@ $('#attackButton').on('click', function() {
         $('#resultSection').empty();
         $('#resultSection').append('<p style="color:white;"> No Enemy here </p>');
         Defender = [];
+        DefenderHP=[];
     } 
     
 
@@ -126,6 +130,7 @@ function fngameover()
             allplayersPower = [8, 5, 20, 25];
             CurrPlayer = [];
             Defender = [];
+            DefenderHP=[];
             CurrPlayerHP = [];
             DefenderHP = [];
             Defendername;
