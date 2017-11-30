@@ -63,8 +63,10 @@ function playerClicked() {
 }
 
 //Atack 
-$('#attackButton').on('click', function() {
-    if (defenderSelected && playerSelected && (!gameover)) {
+$('#attackButton').on('click', function() 
+{
+    if (defenderSelected && playerSelected && (!gameover)) 
+    {
 
         DefenderHP[0] = DefenderHP[0] - CurrPlayerPower;
         CurrPlayerHP[0] = CurrPlayerHP[0] - CurrDefenderPower;
@@ -80,7 +82,8 @@ $('#attackButton').on('click', function() {
         displayCurrPlayers('defenderSec', Defender, DefenderHP);
         displayCurrPlayers('yourPlayer', CurrPlayer, CurrPlayerHP);
 
-        if (DefenderHP[0] <= 0) {
+        if(DefenderHP[0] <= 0 && CurrPlayerHP[0] >0)
+        {
             defenderSelected = false
             $('.defenderSec').empty();
             $('#resultSection').empty();
@@ -97,16 +100,27 @@ $('#attackButton').on('click', function() {
                 Defender = [];
                 DefenderHP=[];
             }
-        } else {
-            if (CurrPlayerHP[0] <= 0) {
-                $('#resultSection').empty();
-                $('#resultSection').append('<p style="color:white;"> You have been defeated, game is over </p>');
-                Defender = [];
-                DefenderHP=[];
-                gameover = true;
-                fngameover();
-                /* add a reset button $('#resultSection').append(*/
-            }
+        } 
+        else {
+                if (CurrPlayerHP[0] <= 0 && DefenderHP[0] > 0)
+                {
+                    $('#resultSection').empty();
+                    $('#resultSection').append('<p style="color:white;"> You have been defeated, game is over </p>');
+                    Defender = [];
+                    DefenderHP=[];
+                    gameover = true;
+                    fngameover();
+                    /* add a reset button $('#resultSection').append(*/
+                }
+                else if(CurrPlayerHP[0] <= 0 && DefenderHP[0] <= 0)
+                {
+                    $('#resultSection').empty();
+                    $('#resultSection').append('<p style="color:white;"> You have defeated'+ Defender[0] +' but have no more HP left , Game over !! </p>');
+                    Defender = [];
+                    DefenderHP=[];
+                    gameover = true;
+                    fngameover();
+                }
         }
     } 
     else if (!defenderSelected && !gameover) 
